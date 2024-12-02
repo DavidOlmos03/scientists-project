@@ -1,25 +1,17 @@
 from flask import Flask, render_template, url_for, request
 from datetime import datetime
 from flask_cors import CORS
-# consumir API json
+
 import json
 
 
-# Indica que este sera el modulo(archivo) principal de nuestra aplicación
+
 app = Flask(__name__)
 
 app.config.from_object(__name__)
 
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 CORS(app, resources={r"/*": {"origins": "http://localhost:8080","allow_headers":"Access-Allow-Origin"}})
-# configuración para cuando se trabaja con formularios y otros casos
-# app.config.from_mapping(
-#     SECRET_KEY = 'dev'
-# )
-
-# Crear mis propios filtros
-# Filtros personalizados
-# El add_template_filter se utiliza para agregar esta función a los filtros disponibles en las plantillas
 
 # forma 1
 # @app.add_template_filter
@@ -38,7 +30,7 @@ def repeat(s,n):
 app.add_template_global(repeat, 'repeat')
 
 # Asignar varias rutas a una vista
-@app.route('/')
+@app.route('/', methods=['GET'])
 @app.route('/index')
 def index():
     # print(url_for('index'))
@@ -67,12 +59,7 @@ def index():
         'index.html', 
         name = name, 
         friends = friends, 
-        # asi se haria sin el filtro
-        # date = today(date)
-        # Así se hace con el filtro
         date = date,
-        # aqui tambien puedo enviar funciones como por ejemplo 
-        # repeat = repeat
         db = db
         )
 
