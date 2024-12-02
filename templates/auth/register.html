@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+
+{% block title %} Register {% endblock %}
+
+{% block title_header %} Register {% endblock %}
+
+{% block description_header %}
+    <!-- | es para agregar un nombre de filtro a utilizar -->
+    <p class="text-light text-center mb-0"><span class="fw-bold">Bienvenido!!</span>
+        esta es una página creada con <span class="fw-bold">flask</span>
+    </p> 
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Registrar Usuario</h1>
+    <!-- Con el metodo post le digo que voy enviar esos valores y además evito que se vean en la url -->
+    <!-- <form action="" method="POST">
+        <label for="usernam" class="fw-bold mt-2">User Name</label><br>
+        <input type="text" name="username" id="username" placeholder="User Name">
+        <br>
+        <label for="username" class="fw-bold mt-2">Password</label><br>
+        <input type="password" name="password" id="password" placeholder="Password">
+        <br>
+        <input class="my-3" type="submit" value="Register">
+    </form> -->
+    <form action="" method="post" class="mx-auto">
+        <!-- inicio para poder enviar los datos -->
+        {{ form.hidden_tag() }}
+        <!-- fin -->
+         <!-- Inicio construcción form -->
+        <label for="usernam" class="fw-bold mt-2">{{ form.username.label }}</label><br>
+        {{ form.username }}
+        <br>
+        <label for="username" class="fw-bold mt-2">{{ form.password.label }}</label><br>
+        {{ form.password }}
+        <br>
+        <br>
+        {{ form.submit }} 
+        <!-- fin form -->
+    </form>
+    {% if error %}
+        {{error}}
+    {% endif  %}
+{% endblock %}

@@ -1,0 +1,44 @@
+[
+    {
+        "cientificos" : {
+        "Gauss":{
+            "id":0,
+            "name":"Carl Friedrich Gauss",
+            "description":"Was a German mathematician, geodesist, and physicist who made significant contributions to many fields in mathematics and science. Gauss had an exceptional influence in many fields of mathematics and science and ranks among history's most influential mathematicians.",
+            "url_image":"Gauss1.jpg"
+        
+        },
+        "Galois":{
+            "id":1,
+            "name": "Evariste Galois",
+            "description":"Was a French mathematician and political activist. While still in his teens, he was able to determine a necessary and sufficient condition for a polynomial to be solvable by radicals, thereby solving a problem that had been open for 350 years. His work laid the foundations for Galois theory and group theory, two major branches of abstract algebra. He was a staunch republican and was heavily involved in the political turmoil that surrounded the French Revolution of 1830.",
+            "url_image":"Galois1.jpg"
+        },
+        "Newton":{
+            "id":2,
+            "name":"Isaac Newton",
+            "description":"Was an English mathematician, physicist, astronomer, alchemist, theologian, and author who was described in his time as a natural philosopher.He was a key figure in the Scientific Revolution and the Enlightenment that followed. His pioneering book Philosophiæ Naturalis Principia Mathematica (Mathematical Principles of Natural Philosophy), first published in 1687, consolidated many previous results and established classical mechanics. Newton also made seminal contributions to optics, and shares credit with German mathematician Gottfried Wilhelm Leibniz for developing infinitesimal calculus.",
+            "url_image":"Newton1.jpg"
+        },
+        "Ramanujan":{
+            "id":3,
+            "name":"Srinivasa Ramanujan",
+            "description":"Was Indian mathematician whose contributions to the theory of numbers include pioneering discoveries of the properties of the partition function.",
+            "url_image":"Ramanujan1.jpg"
+        },
+        "Pythagoras":{
+            "id":4,
+            "name":"Pythagoras",
+            "description": "Greek philosopher, mathematician, and founder of the Pythagorean brotherhood that, although religious in nature, formulated principles that influenced the thought of Plato and Aristotle and contributed to the development of mathematics and Western rational philosophy. (For a fuller treatment of Pythagoras and Pythagorean thought, see Pythagoreanism).",
+            "url_image":"Pythagoras1.jpg"
+        },
+        "Perelman":{
+            "id":5,
+            "name":"Grigori Perelman",
+            "description":"Russian mathematician who was awarded—and declined—the Fields Medal in 2006for his work on the Poincaré conjecture and Fields medalist William Thurston’s geometrization conjecture. In 2003 Perelman had left academia and apparently had abandoned mathematics. He was the first mathematician ever to decline the Fields Medal.",
+            "url_image":"Perelman2.jpg"
+        }
+    }
+    }
+    
+]
