@@ -1,41 +1,35 @@
-<script>
+<script setup>
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import Card from '@/components/Card.vue';
 
-export default {
-  name: 'Home',
-  data() {
-    return {
-      msg:""
-    };
-  },
-  methods: {
-    getResponse() {
-      const path = 'http://127.0.0.1:5000/';
-      axios.get(path)
-      .then(res => {
-        console.log(res.data);
-        this.msg = res.data;
-      }).catch(err => {
-        console.log(err);
-      });
-    }
-  }, 
-  created() {
-    this.getResponse();
+const msg = ref("");
+
+const getResponse = async () => {
+  const path = 'http://127.0.0.1:5000/';
+  try {
+    const res = await axios.get(path);
+    console.log(res.data);
+    msg.value = res.data; 
+  } catch (err) {
+    console.error(err);
   }
-}
+};
+
+onMounted(() => {
+  getResponse();
+});
 
 </script>
 
 <template>
   <div>
     <h1>Welcome to the Home Page</h1>
+    
     <p>{{ msg }}</p>
+
+    <Card />
   </div>
 </template>
 
-<style>
-h1 {
-  color: #42b983;
-}
-</style>
+

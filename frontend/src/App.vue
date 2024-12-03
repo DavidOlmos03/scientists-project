@@ -1,6 +1,13 @@
+<script setup>
+  import { RouterView } from 'vue-router';
+  import NavBar from '@/components/NavBar.vue';
+</script>
+
+
 <template>
   <div id="app">
     <!-- Global navigation or any other global component -->
+    <NavBar />
     <header>
       <nav>
         <ul>
@@ -12,12 +19,12 @@
     </header>
 
     <!-- View rendered based on the route -->
-    <router-view></router-view>
+    <RouterView />
 
     <!-- Footer -->
-    <!-- <footer>
+    <footer>
       <p>© 2024 Scientists Documentation</p>
-    </footer> -->
+    </footer> 
   </div>
 </template>
 
