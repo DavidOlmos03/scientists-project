@@ -8,7 +8,8 @@ export default {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
     "./formkit.config.js",
-    "./node_modules/vue-tailwind-datepicker/**/*.js"
+    "./node_modules/vue-tailwind-datepicker/**/*.js",
+    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     extend: {
@@ -19,5 +20,6 @@ export default {
   },
   plugins: [
     // require('@tailwindcss/forms')
+    require('flowbite/plugin')
   ],
 }

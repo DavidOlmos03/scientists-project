@@ -1,18 +1,31 @@
 📚 Library of Scientists | Biblioteca de Científicos
+
 🌐 English
+
 Description
+
 This project is a web application built with Flask (backend) and Vue.js (frontend). It serves as a digital library that showcases renowned scientists from various fields such as mathematics, physics, programming, chemistry, and more. The goal is to provide an educational resource to explore and celebrate the contributions of these exceptional minds.
 
 Features
+
 🌟 List of scientists with detailed information.
+
 🔍 Search functionality by name or field of study.
+
 🧮 Categorized by disciplines (Mathematics, Physics, Chemistry, etc.).
+
 🌍 Responsive design for desktop and mobile.
+
 Technologies
+
 Backend: Flask
+
 Frontend: Vue.js
+
 Database: SQLite/PostgreSQL (depending on the environment)
-Installation
+
+InstallationInstallation
+
 1. Clone the repository
     https://github.com/DavidOlmos03/scientists-project.git
 2. Navigate to the project directory

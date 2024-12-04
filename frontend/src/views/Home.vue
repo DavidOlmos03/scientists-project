@@ -25,9 +25,11 @@ onMounted(() => {
 <template>
   <div>
     <h1>Welcome to the Home Page</h1>
-    
+
     <p>{{ msg }}</p>
 
+    <Card />
+    <Card />
     <Card />
   </div>
 </template>

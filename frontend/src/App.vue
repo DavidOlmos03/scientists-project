@@ -1,30 +1,31 @@
 <script setup>
   import { RouterView } from 'vue-router';
   import NavBar from '@/components/NavBar.vue';
+  import Footer from '@/components/Footer.vue';
+
 </script>
 
 
 <template>
-  <div id="app">
-    <!-- Global navigation or any other global component -->
-    <NavBar />
+  <div id="app" class="p-4 px-6 lg:px-8">
     <header>
-      <nav>
+      <NavBar />
+      <!-- <nav>
         <ul>
           <li><router-link to="/">Home</router-link></li>
           <li><router-link to="/about">About</router-link></li>
           <li><router-link to="/contact">Contact</router-link></li>
         </ul>
-      </nav>
+      </nav> -->
     </header>
 
     <!-- View rendered based on the route -->
     <RouterView />
 
     <!-- Footer -->
-    <footer>
-      <p>© 2024 Scientists Documentation</p>
-    </footer> 
+     <div>
+       <Footer />
+     </div>
   </div>
 </template>
 
@@ -34,7 +35,7 @@ export default {
 };
 </script>
 
-<style>
+<!-- <style>
 
 body {
   font-family: 'Arial', sans-serif;
@@ -68,5 +69,5 @@ footer {
   width: 100%;
   bottom: 0;
 }
-</style>
+</style> -->
 
