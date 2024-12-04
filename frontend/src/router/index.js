@@ -3,6 +3,9 @@ import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import Contact from '../views/Contact.vue';
 
+// Library
+import Library from '../views/library/Library.vue';
+
 // Errors pages 
 import NotFound from '../views/errors/NotFound.vue';
 import Loading from '../views/errors/Loading.vue';
@@ -37,8 +40,20 @@ const routes = [
   {
     path: '/loading',
     name: 'Loading',
-    component: () => import('../views/errors/Loading.vue'),
+    component: () => import('../views/errors/Loading.vue')
   },
+  {
+    path: '/library',
+    name: 'Library',
+    component: () => Library,
+    children: [
+	{
+	path: 'physics',
+	name: 'Physics',
+	component: () => import('../views/library/Physics.vue')
+	}
+    ]
+  }
 ];
 
 const router = createRouter({

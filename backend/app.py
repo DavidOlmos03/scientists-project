@@ -20,6 +20,10 @@ CORS(app, resources={r"/*": {"origins": "http://localhost:5173","allow_headers":
 def msg():
     return 'This is the homepage of the application JE.'
 
+@app.route('/library', methods = ['GET'])
+def all_scientists():
+	return 'All scientists list from backend'
+
 
 
 if __name__ == "__main__":
