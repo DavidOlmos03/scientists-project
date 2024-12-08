@@ -1,1 +1,1 @@
-CREATE DATABASE IF NOT EXISTS scientists_db;
+CREATE DATABASE scientists_db;

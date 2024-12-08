@@ -1,13 +1,29 @@
-version: '3.8'
+# version: '3.8'
 
 services:
+  flask:
+    build: 
+      context: .. 
+      dockerfile: docker/Dockerfile.dev
+    container_name: flask_container
+    ports:
+      - "5000:5000" 
+    volumes:
+      - ../:/usr/src/app  
+    environment:
+      FLASK_APP: app.py 
+      FLASK_ENV: development  
+      DATABASE_URL: postgresql://postgres:postgres@postgres_container:5432/postgres
+    depends_on:
+      - postgres  
+
   postgres:
     build: 
         context: ../config_db
         dockerfile: Dockerfile
     container_name: postgres_container
     ports:
-      - "5432:5432"
+      - "5435:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
