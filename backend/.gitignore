@@ -14,6 +14,7 @@ instance/
 *.swp
 *.swo
 .env
+.env.local
 .venv/
 venv/
 ENV/
@@ -37,3 +38,5 @@ Desktop.ini
 
 # VS Code
 .vscode/
+
+node_modules/

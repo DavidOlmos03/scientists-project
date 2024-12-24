@@ -1,0 +1,43 @@
+# version: '3.8'
+
+services:
+  # scientists-database-services:
+  #   build: 
+  #     context: . 
+  #     dockerfile: Dockerfile.dev
+  #   volumes:
+  #     - .:/app
+  #     - .venv:/app/.venv 
+  #   ports:
+  #     - "5000:5000" 
+  #   env_file:
+  #     - .env
+  #   networks:
+  #     - scientists
+  #   container_name: flask_container
+  #   depends_on:
+  #     - scientists-postgres-db
+  #   environment:
+  #     FLASK_APP: main.py
+  #     FLASK_ENV: development
+
+  scientists-postgres-db:
+    build: 
+        context: config_db
+        dockerfile: Dockerfile
+    container_name: postgres_container
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres_scientists
+      POSTGRES_PASSWORD: postgres
+
+volumes:
+  postgres_data:
+
+
+networks:
+  scientists:
+    driver: bridge
