@@ -22,16 +22,22 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-COPY pyproject.toml poetry.lock* /
+COPY pyproject.toml poetry.lock* /app/
 
 RUN pip install poetry
 
 RUN poetry config virtualenvs.in-project true
 
+# Instalar dependencias y asegurar que se usará el entorno virtual
+RUN poetry install --no-root && \
+    echo 'export PATH="/app/.venv/bin:$PATH"' >> ~/.bashrc
 
 RUN poetry install --no-root
 
 COPY ./ /app
+
+# Establecer el entorno virtual como el predeterminado
+ENV PATH="/app/.venv/bin:$PATH"
 
 EXPOSE 5000
 
@@ -41,7 +47,7 @@ EXPOSE 5000
 #CMD ["/bin/bash", "-c", "source .venv/bin/activate && export FLASK_APP=main:app && flask run --host=0.0.0.0 --port=5000"]    
 #CMD ["/bin/bash", "-c", "source .venv/bin/activate && export FLASK_APP=main.py && export FLASK_ENV=development && flask run --host=0.0.0.0 --port=5000"]
 
-CMD ["tail", "-f", "/dev/null"]
+# CMD ["tail", "-f", "/dev/null"]
     #ENTRYPOINT ["poetry", "run"]
     #CMD ["flask", "run", "--host=0.0.0.0"]
-    #CMD ["python", "app.py"]
+CMD ["python3", "run.py"]
