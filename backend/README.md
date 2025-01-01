@@ -1,6 +1,22 @@
 Run backend
 
-Opción 1 (Sin scientists-database-services en dockerfile)
+Opción 1 (Full docker)
+Para esta opción 
+DB_HOST=scientists-postgres-db
+DB_PORT=5432
+
+1. Crear network 
+docker create network scientists 
+
+2. Iniciar docker
+docker compose -f ./docker-compose.dev.yml up --build
+
+
+Opción 2 (Sin scientists-database-services en dockerfile)
+Para esta opción
+DB_HOST=localhost
+DB_PORT=5435
+
 1.Iniciar docker (Esto crea e inicia la base de datos en postgres)
 docker compose -f ./docker-compose.dev.yml up --build
 

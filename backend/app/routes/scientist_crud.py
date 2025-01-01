@@ -14,7 +14,7 @@ scientist_model = scientist_api.model('Scientist', {
     'area': fields.String(description='The area of expertise of the scientist')
 })
 
-@scientist_api.route('/scientists')
+@scientist_api.route('/')
 class ScientistList(Resource):
     @scientist_api.marshal_list_with(scientist_model)
     def get(self):

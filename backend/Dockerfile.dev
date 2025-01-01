@@ -1,5 +1,8 @@
 FROM python:3.12-slim
 
+# Instala ping (iputils-ping) y otros paquetes necesarios
+RUN apt-get update && apt-get install -y iputils-ping && apt-get clean
+
 # Poetry configuration
 # ENV PYTHONUNBUFFERED=1 \
 #     PYTHONDONTWRITEBYTECODE=1 \
