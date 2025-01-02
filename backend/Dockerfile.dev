@@ -1,56 +1,27 @@
 FROM python:3.12-slim
 
-# Instala ping (iputils-ping) y otros paquetes necesarios
-RUN apt-get update && apt-get install -y iputils-ping && apt-get clean
+# Instalar dependencias necesarias del sistema
+RUN apt-get update && apt-get install -y libpq-dev gcc && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Poetry configuration
-# ENV PYTHONUNBUFFERED=1 \
-#     PYTHONDONTWRITEBYTECODE=1 \
-#     \
-#     PIP_NO_CACHE_DIR=off \
-#     PIP_DISABLE_PIP_VERSION_CHECK=on \
-#     PIP_DEFAULT_TIMEOUT=100 \
-#     \
-#     POETRY_VERSION=1.6.1 \
-#     POETRY_HOME="/opt/poetry" \
-#     POETRY_VIRTUALENVS_IN_PROJECT=true \
-#     POETRY_NO_INTERACTION=1 \
-#     PYSETUP_PATH="/opt/pysetup" \
-#     VENV_PATH="/opt/pysetup/.venv" \
-#     PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
-
-# needed for psycopg2
-RUN apt-get update && \
-    apt-get install -y libpq-dev gcc
-
+# Establecer el directorio de trabajo
 WORKDIR /app
 
+# Copiar archivos de configuración de poetry
 COPY pyproject.toml poetry.lock* /app/
 
-RUN pip install poetry
-
-RUN poetry config virtualenvs.in-project true
-
-# Instalar dependencias y asegurar que se usará el entorno virtual
-RUN poetry install --no-root && \
+# Instalar poetry
+RUN pip install poetry && \
+    poetry config virtualenvs.in-project true && \
+    poetry install --no-root && \
     echo 'export PATH="/app/.venv/bin:$PATH"' >> ~/.bashrc
 
-RUN poetry install --no-root
-
+# Copiar el resto de la aplicación
 COPY ./ /app
 
-# Establecer el entorno virtual como el predeterminado
+# Configurar el entorno virtual como predeterminado
 ENV PATH="/app/.venv/bin:$PATH"
 
+# Exponer el puerto de la aplicación
 EXPOSE 5000
 
-# ENV FLASK_APP=main:app \
-#     FLASK_ENV=development
-
-#CMD ["/bin/bash", "-c", "source .venv/bin/activate && export FLASK_APP=main:app && flask run --host=0.0.0.0 --port=5000"]    
-#CMD ["/bin/bash", "-c", "source .venv/bin/activate && export FLASK_APP=main.py && export FLASK_ENV=development && flask run --host=0.0.0.0 --port=5000"]
-
-# CMD ["tail", "-f", "/dev/null"]
-    #ENTRYPOINT ["poetry", "run"]
-    #CMD ["flask", "run", "--host=0.0.0.0"]
 CMD ["python3", "run.py"]
